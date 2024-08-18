@@ -5,7 +5,7 @@ import (
 	"errors"
 	"fmt"
 
-	"github.com/danielmiessler/fabric/common"
+	"github.com/danielmiessler/fabric/pkg/common"
 	"github.com/liushuangls/go-anthropic/v2"
 )
 

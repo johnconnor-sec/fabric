@@ -3,7 +3,7 @@ package azure
 import (
 	"strings"
 
-	"github.com/danielmiessler/fabric/common"
+	"github.com/danielmiessler/fabric/pkg/common"
 	"github.com/danielmiessler/fabric/vendors/openai"
 	goopenai "github.com/sashabaranov/go-openai"
 )

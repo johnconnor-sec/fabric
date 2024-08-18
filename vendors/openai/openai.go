@@ -6,7 +6,7 @@ import (
 	"fmt"
 	"io"
 
-	"github.com/danielmiessler/fabric/common"
+	"github.com/danielmiessler/fabric/pkg/common"
 	"github.com/samber/lo"
 	"github.com/sashabaranov/go-openai"
 	goopenai "github.com/sashabaranov/go-openai"

@@ -7,7 +7,7 @@ import (
 	"net/url"
 	"time"
 
-	"github.com/danielmiessler/fabric/common"
+	"github.com/danielmiessler/fabric/pkg/common"
 	"github.com/samber/lo"
 
 	ollamaapi "github.com/ollama/ollama/api"

@@ -2,8 +2,8 @@ package core
 
 import (
 	"fmt"
-	"github.com/danielmiessler/fabric/common"
-	"github.com/danielmiessler/fabric/db"
+	"github.com/danielmiessler/fabric/pkg/common"
+	"github.com/danielmiessler/fabric/internal/db"
 )
 
 type Chatter struct {

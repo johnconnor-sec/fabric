@@ -2,7 +2,7 @@ package db
 
 import (
 	"fmt"
-	"github.com/danielmiessler/fabric/common"
+	"github.com/danielmiessler/fabric/pkg/common"
 )
 
 type Sessions struct {

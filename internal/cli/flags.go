@@ -7,7 +7,7 @@ import (
 	"io"
 	"os"
 
-	"github.com/danielmiessler/fabric/common"
+	"github.com/danielmiessler/fabric/pkg/common"
 	"github.com/jessevdk/go-flags"
 )
 

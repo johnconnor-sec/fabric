@@ -8,8 +8,8 @@ import (
 	"sort"
 	"strings"
 
-	"github.com/danielmiessler/fabric/common"
-	"github.com/danielmiessler/fabric/db"
+	"github.com/danielmiessler/fabric/pkg/common"
+	"github.com/danielmiessler/fabric/internal/db"
 	"github.com/go-git/go-git/v5"
 	"github.com/go-git/go-git/v5/plumbing"
 	"github.com/go-git/go-git/v5/plumbing/object"

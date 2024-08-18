@@ -6,8 +6,8 @@ import (
 	"path/filepath"
 	"strconv"
 
-	"github.com/danielmiessler/fabric/core"
-	"github.com/danielmiessler/fabric/db"
+	"github.com/danielmiessler/fabric/internal/core"
+	"github.com/danielmiessler/fabric/internal/db"
 )
 
 // Cli Controls the cli. It takes in the flags and runs the appropriate functions

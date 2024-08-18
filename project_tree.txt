@@ -1,0 +1,565 @@
+fabric.bak
+├── cmd
+│   ├── cli
+│   │   └── main.go
+│   └── web
+│       └── main.go
+├── .git
+│   ├── branches
+│   ├── config
+│   ├── description
+│   ├── FETCH_HEAD
+│   ├── HEAD
+│   ├── hooks
+│   │   ├── applypatch-msg.sample
+│   │   ├── commit-msg.sample
+│   │   ├── fsmonitor-watchman.sample
+│   │   ├── post-update.sample
+│   │   ├── pre-applypatch.sample
+│   │   ├── pre-commit.sample
+│   │   ├── pre-merge-commit.sample
+│   │   ├── prepare-commit-msg.sample
+│   │   ├── pre-push.sample
+│   │   ├── pre-rebase.sample
+│   │   ├── pre-receive.sample
+│   │   ├── push-to-checkout.sample
+│   │   ├── sendemail-validate.sample
+│   │   └── update.sample
+│   ├── index
+│   ├── info
+│   │   └── exclude
+│   ├── logs
+│   │   ├── HEAD
+│   │   └── refs
+│   │       ├── heads
+│   │       │   └── main
+│   │       └── remotes
+│   │           └── origin
+│   │               ├── goVersion
+│   │               ├── HEAD
+│   │               └── main
+│   ├── objects
+│   │   ├── 01
+│   │   │   └── 169cf71da32d07f2da9177c2aacea49f70d904
+│   │   ├── 0b
+│   │   │   └── d87a45bc339dd58b1370aab9d8e0795ed4949f
+│   │   ├── 15
+│   │   │   └── a7aaff2516655824770c237b1e0622a851eb16
+│   │   ├── 19
+│   │   │   └── eab2e945b3b570c46e35d391e9cde9a537660c
+│   │   ├── 1a
+│   │   │   └── 458c18b036ddefc4bf0ec2a56aa7442af5e88a
+│   │   ├── 1e
+│   │   │   └── fe88466b273a8ab38790be65fd8a656a33fbe5
+│   │   ├── 20
+│   │   │   └── ce26e76250c4dc4add7ed7f5a9cf2082e6f2fc
+│   │   ├── 21
+│   │   │   └── 068abdbc247eafd2ee903efcf9a2fc9ba56091
+│   │   ├── 25
+│   │   │   └── cefd781514eec0db57fe8f79a6c522ce232ad1
+│   │   ├── 2e
+│   │   │   └── 2fab27a413a88ae28dd1382d5813ed05b9be8f
+│   │   ├── 30
+│   │   │   └── 059bcebf5a7cbc5633f7116147d724d839e3ea
+│   │   ├── 3b
+│   │   │   └── 35d88611d8bfae01476c0e2a833db1e2300d0e
+│   │   ├── 40
+│   │   │   └── f66444a8f0ebd9cb431e7ab527d5655462e0e1
+│   │   ├── 42
+│   │   │   └── f35488b325479d55aaa589a280e40dc86c2007
+│   │   ├── 43
+│   │   │   └── 09d56c0aa097b79014d945fa3301aa39e2d6bd
+│   │   ├── 44
+│   │   │   └── 2e72e6b4c3175614ab5b4d4de4ca99dcfdc1f2
+│   │   ├── 55
+│   │   │   └── 621a6963e40f67ae17c134dd719e29577eb308
+│   │   ├── 60
+│   │   │   └── 30ae8cdb08df5e3aa4e63f95e29e0eb57e9e34
+│   │   ├── 61
+│   │   │   └── e56de9f0f4a03b3b596ce976cb65089edcf2f8
+│   │   ├── 62
+│   │   │   └── 84d6858ecb688cbbeb7e1903db9f99ae7cff73
+│   │   ├── 66
+│   │   │   └── 6266b40c509ea59b9391f306a098e2ea91a4e9
+│   │   ├── 6d
+│   │   │   └── 4f7e23c5bd0a8b4348a2ff19dd9e69f08ac9d3
+│   │   ├── 72
+│   │   │   └── 4803c07b60a294d67da39217bb1dff03cad8a9
+│   │   ├── 7a
+│   │   │   └── 8e6338eb4f1dc57170e36c10a76157259d6fa9
+│   │   ├── 84
+│   │   │   └── 5b4003e781122acf64aace5b86406ea23711ae
+│   │   ├── 8d
+│   │   │   └── 8789e435f2aa6683c0a216754ab53f5cd35dae
+│   │   ├── 8f
+│   │   │   └── 8b4e3dd8846fbf8a4e1f1427f59ff11464241c
+│   │   ├── 94
+│   │   │   └── 941580b79edcdbeab3b694de8caee4b10b079a
+│   │   ├── a6
+│   │   │   ├── 143cd077ad1cf25004316ad458c1dda8c10a6b
+│   │   │   └── 299303fe7d22709dd8247f3aed6ca9c9e46f1f
+│   │   ├── af
+│   │   │   └── 2e818319dbfea3cd60a66fa58e495ddb2f9b3e
+│   │   ├── b1
+│   │   │   └── 18ae789958017b015581482108d596d31c687e
+│   │   ├── b2
+│   │   │   └── c969d2a4435ad54984d04d115d8c519b63b3d6
+│   │   ├── b6
+│   │   │   └── a2c6c2b3306c10da9a1ce80ce6ea2239c8434e
+│   │   ├── ba
+│   │   │   └── 31e0f8a05907e584d2c2f19b1a545d403d56a0
+│   │   ├── bb
+│   │   │   ├── dca0f91f9d6dc3b57e9a989ce99a217a4346a2
+│   │   │   └── e36a4e4bf3c747cd562c8239913413f65e3acc
+│   │   ├── c0
+│   │   │   └── 4b11d988391dbb5f939395f67cd681a3f83aa2
+│   │   ├── cd
+│   │   │   ├── 66d88e2df9ddc4d239c01a89308495f2abccbe
+│   │   │   ├── 7dfb9171ccdeedfb4e60da3edf5fb889a96c94
+│   │   │   └── cb3a2d1393f4e9ed2eaa9052f2cce78bcda542
+│   │   ├── d8
+│   │   │   └── 7333fea1d3c238cf50f23c69bf839c11cbb20f
+│   │   ├── db
+│   │   │   └── 906845454f1ade1929280fb9d68b4b7ee0860f
+│   │   ├── f0
+│   │   │   └── 03022401488792bfcf7b64e9bccfb77680f9a3
+│   │   ├── f5
+│   │   │   └── 5e60f652ff955a8c7272c307c12838f940429a
+│   │   ├── fa
+│   │   │   └── b9cb29dae960b2854b06d4fcc49392495628d7
+│   │   ├── fe
+│   │   │   └── 58c6153233b5cd1f8e4e2900b5dd2240286dbb
+│   │   ├── info
+│   │   └── pack
+│   │       ├── pack-685c2cc20bde652d3df08499c6cf88e6073cb453.idx
+│   │       ├── pack-685c2cc20bde652d3df08499c6cf88e6073cb453.pack
+│   │       ├── pack-685c2cc20bde652d3df08499c6cf88e6073cb453.rev
+│   │       ├── pack-dbbbd652499d7b6afab68bce553d6ed445983039.idx
+│   │       ├── pack-dbbbd652499d7b6afab68bce553d6ed445983039.pack
+│   │       └── pack-dbbbd652499d7b6afab68bce553d6ed445983039.rev
+│   ├── ORIG_HEAD
+│   ├── packed-refs
+│   └── refs
+│       ├── heads
+│       │   └── main
+│       ├── remotes
+│       │   └── origin
+│       │       ├── goVersion
+│       │       ├── HEAD
+│       │       └── main
+│       └── tags
+│           ├── 2.0
+│           ├── v0.9.04
+│           └── v1.4.0
+├── .github
+│   ├── ISSUE_TEMPLATE
+│   │   ├── bug.yml
+│   │   ├── feature-request.yml
+│   │   └── question.yml
+│   ├── pull_request_template.md
+│   └── workflows
+│       └── go.yml
+├── .gitignore
+├── go.mod
+├── go.sum
+├── images
+│   └── fabric-logo-gif.gif
+├── internal
+│   ├── api
+│   │   ├── handlers.go
+│   │   └── routes.go
+│   ├── cli
+│   │   ├── cli.go
+│   │   └── flags.go
+│   ├── core
+│   │   ├── chatter.go
+│   │   ├── fabric.go
+│   │   ├── models.go
+│   │   ├── patterns_loader.go
+│   │   └── vendors.go
+│   ├── db
+│   │   ├── contexts.go
+│   │   ├── db.go
+│   │   ├── patterns.go
+│   │   ├── sessions.go
+│   │   └── storage.go
+│   └── utils
+│       └── log.go
+├── NOTES.md
+├── patterns
+│   ├── agility_story
+│   │   ├── system.md
+│   │   └── user.md
+│   ├── ai
+│   │   └── system.md
+│   ├── analyze_answers
+│   │   ├── README.md
+│   │   └── system.md
+│   ├── analyze_claims
+│   │   ├── system.md
+│   │   └── user.md
+│   ├── analyze_debate
+│   │   └── system.md
+│   ├── analyze_email_headers
+│   │   ├── system.md
+│   │   └── user.md
+│   ├── analyze_incident
+│   │   ├── system.md
+│   │   └── user.md
+│   ├── analyze_logs
+│   │   └── system.md
+│   ├── analyze_malware
+│   │   └── system.md
+│   ├── analyze_paper
+│   │   ├── system.md
+│   │   └── user.md
+│   ├── analyze_patent
+│   │   └── system.md
+│   ├── analyze_personality
+│   │   └── system.md
+│   ├── analyze_presentation
+│   │   └── system.md
+│   ├── analyze_prose
+│   │   ├── system.md
+│   │   └── user.md
+│   ├── analyze_prose_json
+│   │   ├── system.md
+│   │   └── user.md
+│   ├── analyze_prose_pinker
+│   │   └── system.md
+│   ├── analyze_spiritual_text
+│   │   ├── system.md
+│   │   └── user.md
+│   ├── analyze_tech_impact
+│   │   ├── system.md
+│   │   └── user.md
+│   ├── analyze_threat_report
+│   │   ├── system.md
+│   │   └── user.md
+│   ├── analyze_threat_report_trends
+│   │   ├── system.md
+│   │   └── user.md
+│   ├── answer_interview_question
+│   │   └── system.md
+│   ├── ask_secure_by_design_questions
+│   │   └── system.md
+│   ├── capture_thinkers_work
+│   │   └── system.md
+│   ├── check_agreement
+│   │   ├── system.md
+│   │   └── user.md
+│   ├── clean_text
+│   │   ├── system.md
+│   │   └── user.md
+│   ├── coding_master
+│   │   └── system.md
+│   ├── compare_and_contrast
+│   │   ├── system.md
+│   │   └── user.md
+│   ├── create_5_sentence_summary
+│   │   └── system.md
+│   ├── create_academic_paper
+│   │   └── system.md
+│   ├── create_ai_jobs_analysis
+│   │   └── system.md
+│   ├── create_aphorisms
+│   │   ├── system.md
+│   │   └── user.md
+│   ├── create_art_prompt
+│   │   └── system.md
+│   ├── create_better_frame
+│   │   ├── system.md
+│   │   └── user.md
+│   ├── create_coding_project
+│   │   ├── README.md
+│   │   └── system.md
+│   ├── create_command
+│   │   ├── README.md
+│   │   ├── system.md
+│   │   └── user.md
+│   ├── create_cyber_summary
+│   │   └── system.md
+│   ├── create_formal_email
+│   │   └── system.md
+│   ├── create_git_diff_commit
+│   │   ├── README.md
+│   │   └── system.md
+│   ├── create_graph_from_input
+│   │   └── system.md
+│   ├── create_hormozi_offer
+│   │   └── system.md
+│   ├── create_idea_compass
+│   │   └── system.md
+│   ├── create_investigation_visualization
+│   │   └── system.md
+│   ├── create_keynote
+│   │   └── system.md
+│   ├── create_logo
+│   │   ├── system.md
+│   │   └── user.md
+│   ├── create_markmap_visualization
+│   │   └── system.md
+│   ├── create_mermaid_visualization
+│   │   └── system.md
+│   ├── create_mermaid_visualization_for_github
+│   │   └── system.md
+│   ├── create_micro_summary
+│   │   └── system.md
+│   ├── create_network_threat_landscape
+│   │   ├── system.md
+│   │   └── user.md
+│   ├── create_npc
+│   │   ├── system.md
+│   │   └── user.md
+│   ├── create_pattern
+│   │   └── system.md
+│   ├── create_quiz
+│   │   ├── README.md
+│   │   └── system.md
+│   ├── create_reading_plan
+│   │   └── system.md
+│   ├── create_report_finding
+│   │   ├── system.md
+│   │   └── user.md
+│   ├── create_rpg_summary
+│   │   └── system.md
+│   ├── create_security_update
+│   │   ├── system.md
+│   │   └── user.md
+│   ├── create_show_intro
+│   │   └── system.md
+│   ├── create_sigma_rules
+│   │   └── system.md
+│   ├── create_stride_threat_model
+│   │   └── system.md
+│   ├── create_summary
+│   │   └── system.md
+│   ├── create_tags
+│   │   └── system.md
+│   ├── create_threat_scenarios
+│   │   └── system.md
+│   ├── create_ttrc_graph
+│   │   └── system.md
+│   ├── create_ttrc_narrative
+│   │   └── system.md
+│   ├── create_upgrade_pack
+│   │   └── system.md
+│   ├── create_video_chapters
+│   │   ├── system.md
+│   │   └── user.md
+│   ├── create_visualization
+│   │   └── system.md
+│   ├── explain_code
+│   │   ├── system.md
+│   │   └── user.md
+│   ├── explain_docs
+│   │   ├── system.md
+│   │   └── user.md
+│   ├── explain_math
+│   │   ├── README.md
+│   │   └── system.md
+│   ├── explain_project
+│   │   └── system.md
+│   ├── explain_terms
+│   │   └── system.md
+│   ├── export_data_as_csv
+│   │   └── system.md
+│   ├── extract_algorithm_update_recommendations
+│   │   ├── system.md
+│   │   └── user.md
+│   ├── extract_article_wisdom
+│   │   ├── dmiessler
+│   │   │   └── extract_wisdom-1.0.0
+│   │   │       ├── system.md
+│   │   │       └── user.md
+│   │   ├── README.md
+│   │   ├── system.md
+│   │   └── user.md
+│   ├── extract_book_ideas
+│   │   └── system.md
+│   ├── extract_book_recommendations
+│   │   └── system.md
+│   ├── extract_business_ideas
+│   │   └── system.md
+│   ├── extract_controversial_ideas
+│   │   └── system.md
+│   ├── extract_extraordinary_claims
+│   │   └── system.md
+│   ├── extract_ideas
+│   │   └── system.md
+│   ├── extract_insights
+│   │   └── system.md
+│   ├── extract_instructions
+│   │   └── system.md
+│   ├── extract_jokes
+│   │   └── system.md
+│   ├── extract_main_idea
+│   │   └── system.md
+│   ├── extract_patterns
+│   │   └── system.md
+│   ├── extract_poc
+│   │   ├── system.md
+│   │   └── user.md
+│   ├── extract_predictions
+│   │   └── system.md
+│   ├── extract_questions
+│   │   └── system.md
+│   ├── extract_recommendations
+│   │   ├── system.md
+│   │   └── user.md
+│   ├── extract_references
+│   │   ├── system.md
+│   │   └── user.md
+│   ├── extract_song_meaning
+│   │   └── system.md
+│   ├── extract_sponsors
+│   │   └── system.md
+│   ├── extract_videoid
+│   │   ├── system.md
+│   │   └── user.md
+│   ├── extract_wisdom
+│   │   ├── dmiessler
+│   │   │   └── extract_wisdom-1.0.0
+│   │   │       ├── system.md
+│   │   │       └── user.md
+│   │   ├── README.md
+│   │   └── system.md
+│   ├── extract_wisdom_agents
+│   │   └── system.md
+│   ├── extract_wisdom_dm
+│   │   └── system.md
+│   ├── extract_wisdom_nometa
+│   │   └── system.md
+│   ├── find_hidden_message
+│   │   └── system.md
+│   ├── find_logical_fallacies
+│   │   └── system.md
+│   ├── get_wow_per_minute
+│   │   └── system.md
+│   ├── get_youtube_rss
+│   │   └── system.md
+│   ├── improve_academic_writing
+│   │   ├── system.md
+│   │   └── user.md
+│   ├── improve_prompt
+│   │   └── system.md
+│   ├── improve_report_finding
+│   │   ├── system.md
+│   │   └── user.md
+│   ├── improve_writing
+│   │   ├── system.md
+│   │   └── user.md
+│   ├── label_and_rate
+│   │   └── system.md
+│   ├── official_pattern_template
+│   │   └── system.md
+│   ├── provide_guidance
+│   │   └── system.md
+│   ├── rate_ai_response
+│   │   └── system.md
+│   ├── rate_ai_result
+│   │   └── system.md
+│   ├── rate_content
+│   │   ├── system.md
+│   │   └── user.md
+│   ├── rate_value
+│   │   ├── README.md
+│   │   ├── system.md
+│   │   └── user.md
+│   ├── raw_query
+│   │   └── system.md
+│   ├── recommend_artists
+│   │   └── system.md
+│   ├── recommend_pipeline_upgrades
+│   │   └── system.md
+│   ├── recommend_talkpanel_topics
+│   │   └── system.md
+│   ├── show_fabric_options_markmap
+│   │   └── system.md
+│   ├── suggest_pattern
+│   │   ├── system.md
+│   │   └── user.md
+│   ├── summarize
+│   │   ├── dmiessler
+│   │   │   └── summarize
+│   │   │       ├── system.md
+│   │   │       └── user.md
+│   │   ├── system.md
+│   │   └── user.md
+│   ├── summarize_debate
+│   │   └── system.md
+│   ├── summarize_git_changes
+│   │   └── system.md
+│   ├── summarize_git_diff
+│   │   └── system.md
+│   ├── summarize_lecture
+│   │   └── system.md
+│   ├── summarize_legislation
+│   │   └── system.md
+│   ├── summarize_micro
+│   │   ├── system.md
+│   │   └── user.md
+│   ├── summarize_newsletter
+│   │   ├── system.md
+│   │   └── user.md
+│   ├── summarize_paper
+│   │   ├── README.md
+│   │   ├── system.md
+│   │   └── user.md
+│   ├── summarize_prompt
+│   │   └── system.md
+│   ├── summarize_pull-requests
+│   │   ├── system.md
+│   │   └── user.md
+│   ├── summarize_rpg_session
+│   │   └── system.md
+│   ├── to_flashcards
+│   │   └── system.md
+│   ├── tweet
+│   │   └── system.md
+│   ├── write_essay
+│   │   └── system.md
+│   ├── write_hackerone_report
+│   │   ├── README.md
+│   │   └── system.md
+│   ├── write_micro_essay
+│   │   └── system.md
+│   ├── write_nuclei_template_rule
+│   │   ├── system.md
+│   │   └── user.md
+│   ├── write_pull-request
+│   │   └── system.md
+│   └── write_semgrep_rule
+│       ├── system.md
+│       └── user.md
+├── pkg
+│   └── common
+│       ├── configurable.go
+│       ├── domain.go
+│       ├── messages.go
+│       └── vendor.go
+├── README.md
+├── system.md
+├── vendors
+│   ├── anthropic
+│   │   └── anthropic.go
+│   ├── azure
+│   │   └── azure.go
+│   ├── gemini
+│   │   └── gemini.go
+│   ├── grocq
+│   │   └── grocq.go
+│   ├── ollama
+│   │   └── ollama.go
+│   └── openai
+│       └── openai.go
+├── web
+│   ├── static
+│   │   └── css
+│   │       └── style.css
+│   └── templates
+│       └── index.html
+└── youtube
+    └── youtube.go
+
+234 directories, 329 files
