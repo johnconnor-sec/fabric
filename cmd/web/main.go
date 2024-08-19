@@ -1,17 +1,16 @@
 package main
 
 import (
-    "io"
     "github.com/danielmiessler/fabric/internal/api"
     "github.com/danielmiessler/fabric/internal/core"
-    "html/template"
     "github.com/danielmiessler/fabric/internal/db"
     "github.com/labstack/echo/v4"
     "github.com/labstack/echo/v4/middleware"
-    "os"
-    "os/user"
+    "html/template"
     "path/filepath"
-    "strings"
+    "os/user"
+    "os"
+    "io"
 )
 
 // Template struct and Render method
@@ -21,6 +20,21 @@ type Template struct {
 
 func (t *Template) Render(w io.Writer, name string, data interface{}, c echo.Context) error {
     return t.templates.ExecuteTemplate(w, name, data)
+}
+
+type Fabric struct {
+    *core.Fabric
+    *db.Db
+    *api.Handlers
+}
+
+func NewFabric(db *db.Db) (*Fabric, error) {
+    fabric, err := core.NewFabric(db)
+    if err != nil {
+        return nil, err
+    }
+    handlers := api.NewHandlers(fabric)
+    return &Fabric{Fabric: fabric, Db: db, Handlers: handlers}, nil
 }
 
 // Define the patternValue function
@@ -47,20 +61,14 @@ func patternValue() string {
         }
     }
 
-    return "defaultPatternValue" // Return a default value if no pattern value is found
+    return "patternValue" // Return a default value if no pattern value is found
 }
-
-    
 
 // Helper function to extract pattern value from file content
 func extractPatternValue(content string) string {
     // Implement the logic to extract the pattern value
     // For example, if the pattern value is on the first line:
-    lines := strings.Split(content, "\n")
-    if len(lines) > 0 {
-        return lines[0] // Assuming the pattern value is the first line
-    }
-    return ""
+    return content // Assuming the entire content is the pattern value
 }
 
 func main() {
@@ -74,10 +82,15 @@ func main() {
         panic(err)
     }
 
-    fabric, err := core.NewFabric(fabricDB)
+    fabric, err := NewFabric(fabricDB)
     if err != nil {
         panic(err)
     }
+
+    // Load patterns
+    if err := fabric.PatternsLoader.(); err != nil {
+        panic(err)
+    }   
 
     // Initialize Echo
     e := echo.New()
@@ -94,7 +107,7 @@ func main() {
     e.Renderer = t
 
     // Setup routes
-    api.SetupRoutes(e, fabric)
+    api.SetupRoutes(e, fabric.Fabric)
 
     // Start server
     e.Logger.Fatal(e.Start(":8080"))

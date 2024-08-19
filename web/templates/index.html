@@ -1,94 +1,77 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fabric Web interface</title>
-    <script src="https://unpkg.com/htmx.org@1.9.6"></script>
-    <script src="https://unpkg.com/hyperscript.org@0.9.11"></script>
-    <style rel="stylesheet" href="static/css/style.css"></style>
-    <!-- <style>
-        body { font-family: Arial, sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; }
-        #chat-container { border: 1px solid #ccc; padding: 20px; margin-top: 20px; }
-        #response { white-space: pre-wrap; }
-    </style> -->
-</head>
-
-<body>
-    <div class="container">
-        <h1>Fabric Web Interface</h1>
+{{ define "content" }}
         
-        <div id="query-container">
-            <!-- Query template -->
-            <template id="query-template">
-                <div class="query-instance">
-                    <select class="model-select" name="model" hx-get="/vendors/" hx-trigger="load" hx-target="this">
-                        <option value="">Select Model</option>
-                    </select>
-                    <select class="pattern-select" name="pattern" hx-get="/patterns/" hx-trigger="load" hx-target="this">
-                        <option value="">Select Pattern</option>
-                    </select>
-                    <div class="pattern-content"
-                        hx-get="/patterns/"
-                        hx-trigger="change from:.pattern-select"
-                        htmx-swap="outerHTML">
-                        Select a pattern to view its content
-                    </div>
-                    <div class="model-options">
-                        <label>Temperature: <input type="number" name="temperature" value="0.7" min="0" max="1" step="0.1"></label>
-                        <label>Top P: <input type="number" name="top_p" value="0.9" min="0" max="1" step="0.1"></label>
-                        <label>Presence Penalty: <input type="number" name="presence_penalty" value="0" min="0" max="1" step="0.1"></label>
-                        <label>Frequency Penalty: <input type="number" name="frequency_penalty" value="0" min="0" max="1" step="0.1"></label>
-                        <label>Stream: <input type="checkbox" name="stream" value="true"></label>
-                    </div>
-                    <textarea class="user-query" placeholder="Enter your query"></textarea>
-                    <button class="remove-query" _="on click remove the closest .query-instance">Remove</button>
-                </div>
-            </template>
-
-            <!-- Initial query instance -->
-            <div class="query-instance">
-                <select class="model-select" name="model" hx-get="/vendors/*" hx-trigger="load" hx-target="this">
-                    <option value="">Select Model</option>
-                </select>
-                <select class="pattern-select" name="pattern" hx-get="/patterns" hx-trigger="load" hx-target="this">
-                    <option value="">Select Pattern</option>
-                </select>
-                <div class="pattern-content" 
-                    hx-get="/patterns/{{patternValue}}" 
-                    hx-trigger="change from:.pattern-select">
-                    Select a pattern to view its content
-                </div>
-                <div class="model-options">
-                    <label>Temperature: <input type="number" name="temperature" value="0.7" min="0" max="1" step="0.1"></label>
-                    <label>Top P: <input type="number" name="top_p" value="0.9" min="0" max="1" step="0.1"></label>
-                    <label>Presence Penalty: <input type="number" name="presence_penalty" value="0" min="0" max="1" step="0.1"></label>
-                    <label>Frequency Penalty: <input type="number" name="frequency_penalty" value="0" min="0" max="1" step="0.1"></label>
-                    <label>Stream: <input type="checkbox" name="stream" value="true"></label>
-                </div>
-                <textarea class="user-query" placeholder="Enter your query"></textarea>
+<div class="content">
+    <!-- Query template -->
+    <template id="query-template">
+        <div class="query-instance">
+            <select class="model-select" name="model" hx-get="/vendors/" hx-trigger="load" hx-target="this">
+                <option value="">Select Model</option>
+            </select>
+            <select class="pattern-select" name="pattern" hx-get="/patterns/" hx-trigger="load" hx-target="this">
+                <option value="">Select Pattern</option>
+            </select>
+            <div class="pattern-content"
+                hx-get="/patterns/"
+                hx-trigger="change from:.pattern-select"
+                hx-target="this">
+                Select a pattern to view its content
             </div>
+            <div class="model-options">
+                <label>Temperature: <input type="number" name="temperature" value="0.7" min="0" max="1" step="0.1"></label>
+                <label>Top P: <input type="number" name="top_p" value="0.9" min="0" max="1" step="0.1"></label>
+                <label>Presence Penalty: <input type="number" name="presence_penalty" value="0" min="0" max="1" step="0.1"></label>
+                <label>Frequency Penalty: <input type="number" name="frequency_penalty" value="0" min="0" max="1" step="0.1"></label>
+                <label>Stream: <input type="checkbox" name="stream" value="true"></label>
+            </div>
+            <textarea class="user-query" placeholder="Enter your query"></textarea>
+            <button class="remove-query" _="on click remove the closest .query-instance">Remove</button>
         </div>
+    </template>
 
-                    
-        <button id="add-query" _="on click call addQuery()">Add Query</button>
-        <button hx-post="/chat" 
-                hx-trigger="click" 
-                hx-target="#response" 
-                hx-include="#query-container">
-            Send
-        </button>
-        <div id="spinner" class="htmx-indicator">
-            Loading...
-        </div>
-        <br><br>        
-        <div id="response-container">
-            <h3>Response:</h3>
-            <div id="response"></div>
-            <br>
+    <!-- Initial query instance -->
+    <div id="query-container">
+        <div class="query-instance">
+            <select class="model-select" name="model" hx-get="/vendors/*" hx-trigger="load" hx-target="this">
+                <option value="">Select Model</option>
+            </select>
+            <select class="pattern-select" name="pattern" hx-get="/patterns" hx-trigger="load" hx-target="this">
+                <option value="">Select Pattern</option>
+            </select>
+            <div class="pattern-content" 
+                hx-get="/patterns/"
+                hx-trigger="change from:.pattern-select"
+                hx-target="this">
+                Select a pattern to view its content
+            </div>
+            <div class="model-options">
+                <label>Temperature: <input type="number" name="temperature" value="0.7" min="0" max="1" step="0.1"></label>
+                <label>Top P: <input type="number" name="top_p" value="0.9" min="0" max="1" step="0.1"></label>
+                <label>Presence Penalty: <input type="number" name="presence_penalty" value="0" min="0" max="1" step="0.1"></label>
+                <label>Frequency Penalty: <input type="number" name="frequency_penalty" value="0" min="0" max="1" step="0.1"></label>
+                <label>Stream: <input type="checkbox" name="stream" value="true"></label>
+            </div>
+            <textarea class="user-query" placeholder="Enter your query"></textarea>
         </div>
     </div>
+</div>
+
+<button id="add-query" _="on click call addQuery()">Add Query</button>
+<button id="send-queries"
+        hx-post="/chat" 
+        hx-trigger="click" 
+        hx-target="#response" 
+        hx-indicator="#spinner">
+    Send
+</button>
+<div id="spinner" class="htmx-indicator">
+    Loading...
+</div>
+<br><br>        
+<div id="response-container">
+    <h3>Response:</h3>
+    <div id="response"></div>
+    <br>
+</div>
 
     <script>
         function addQuery() {
@@ -106,11 +89,16 @@
                     if (response.error) {
                         content.innerHTML = `<div class="error">${response.error}</div>`;
                     } else {
-                        content.innerHTML = response.map(r => `<div class="response-item">${r}</div>`).join('');
+                        content.innerHTML = response.map((r, index) => `
+                            <div class="response-item">
+                                <h4>Response ${index + 1}:</h4>
+                                <pre>${r}</pre>
+                            </div>
+                        `).join('');
                     }
                 } catch (e) {
                     console.error("Failed to parse response:", e);
-                    content.innerHTML = `<div class="error">Failed to parse response</div>`;
+                    content.innerHTML = `<div class="error">Failed to parse response: ${e.message}</div>`;
                 }
             }
         });
@@ -127,36 +115,33 @@
             }
         });
 
-        document.getElementById('send-queries').addEventListener('click', function(event) {
-            event.preventDefault();
-            const queryInstances = document.querySelectorAll('.query-instance');
-            const queries = Array.from(queryInstances).map(instance => ({
-                model: instance.querySelector('.model-select').value,
-                pattern: instance.querySelector('.pattern-select').value,
-                query: instance.querySelector('.user-query').value
-            }));
-    
-            fetch('/chat', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ queries: queries })
-            })
-            .then(response => response.json())
-            .then(data => {
-                const responseContainer = document.getElementById('response');
-                if (data.error) {
-                    responseContainer.innerHTML = `<div class="error">${data.error}</div>`;
-                } else {
-                    responseContainer.innerHTML = data.map(r => `<div class="response-item">${r}</div>`).join('');
+        htmx.on('htmx:configRequest', function(event) {
+            if (event.detail.elt.id === 'send-queries') {
+                const queryInstances = document.querySelectorAll('.query-instance');
+                const queries = Array.from(queryInstances).map(instance => ({
+                    model: instance.querySelector('.model-select').value,
+                    pattern: instance.querySelector('.pattern-select').value,
+                    query: instance.querySelector('.user-query').value,
+                    options: {
+                        temperature: parseFloat(instance.querySelector('[name="temperature"]').value),
+                        top_p: parseFloat(instance.querySelector('[name="top_p"]').value),
+                        presence_penalty: parseFloat(instance.querySelector('[name="presence_penalty"]').value),
+                        frequency_penalty: parseFloat(instance.querySelector('[name="frequency_penalty"]').value),
+                        stream: instance.querySelector('[name="stream"]').checked
+                    }
+                }));
+                event.detail.headers['Content-Type'] = 'application/json';
+                event.detail.body = JSON.stringify(queries);
+            }
+        });
+
+        htmx.on('htmx:afterRequest', function(event) {
+            if (event.detail.elt.id === 'send-queries') {
+                if (event.detail.failed) {
+                    const responseContainer = document.getElementById('response');
+                    responseContainer.innerHTML = `<div class="error">Request failed: ${event.detail.xhr.status} ${event.detail.xhr.statusText}</div>`;
                 }
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                document.getElementById('response').innerHTML = `<div class="error">Failed to send request: ${error}</div>`;
-            });
+            }
         });
     </script>
-</body>
-</html>
+{{ end }}
