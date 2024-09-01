@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"io"
 	"net/http"
+	"regexp"
 )
 
 func makeRequest(url string, inputStr string) (string, error) {
@@ -20,7 +21,22 @@ func makeRequest(url string, inputStr string) (string, error) {
 		return "", fmt.Errorf("error reading response body: %v", err)
 	}
 
-	return string(body), nil
+	// Convert body to string
+	bodyStr := string(body)
+
+	// Use regex to remove markdown links
+	linkRegex := regexp.MustCompile(`\!\[.*?\]\(.*?\)|\[.*?\]\(.*?\)`)
+	bodyStr = linkRegex.ReplaceAllString(bodyStr, "")
+
+  // Use regex to collapse more than three consecutive blank lines
+	blankLineRegex := regexp.MustCompile(`(\n\s*\n\s*\n)(\s*\n)+`)
+	bodyStr = blankLineRegex.ReplaceAllString(bodyStr, "")
+
+   	specialCharRegex := regexp.MustCompile(`(?m)^\s*\*\s*$`)
+	bodyStr = specialCharRegex.ReplaceAllString(bodyStr, "")
+
+ 	return bodyStr, nil
+
 }
 
 func main() {
