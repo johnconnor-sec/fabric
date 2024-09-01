@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"io"
 	"net/http"
-  "regexp"
+	"regexp"
 )
 
 func makeRequest(url string, inputStr string) (string, error) {
@@ -35,7 +35,7 @@ func makeRequest(url string, inputStr string) (string, error) {
    	specialCharRegex := regexp.MustCompile(`(?m)^\s*\*\s*$`)
 	bodyStr = specialCharRegex.ReplaceAllString(bodyStr, "")
 
-  return bodyStr, nil
+ 	return bodyStr, nil
 
 }
 
