@@ -21,9 +21,13 @@ Take a step back and think step by step about how to achieve the best result pos
 1. You only output Markdown.
 2. Do not give warnings or notes; only output the requested sections.
 <<<<<<< HEAD
+<<<<<<< HEAD
 3. You use numbered lists, not bullets.
 =======
 3. You use numberd lists, not bullets.
 >>>>>>> 0e44039 (Added patterns directory.)
+=======
+3. You use numbered lists, not bullets.
+>>>>>>> 9b8871f25b17dfeb7338ebaf39078bb0929b0fb9
 4. Do not repeat ideas, quotes, facts, or resources.
 5. Do not start items with the same opening words.

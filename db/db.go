@@ -16,7 +16,11 @@ func NewDb(dir string) (db *Db) {
 
 	db.Patterns = &Patterns{
 		Storage:                &Storage{Label: "Patterns", Dir: db.FilePath("patterns"), ItemIsDir: true},
+<<<<<<< HEAD
 		SystemPatternFile:      "system.xml",
+=======
+		SystemPatternFile:      "system.md",
+>>>>>>> 9b8871f25b17dfeb7338ebaf39078bb0929b0fb9
 		UniquePatternsFilePath: db.FilePath("unique_patterns.txt"),
 	}
 

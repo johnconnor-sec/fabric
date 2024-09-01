@@ -22,6 +22,7 @@
 [Just Use the Patterns](#just-use-the-patterns) •
 [Custom Patterns](#custom-patterns) •
 [Helper Apps](#helper-apps) •
+<<<<<<< HEAD
 
 
 <img src="./images/fabric-logo-gif.gif" alt="fabriclogo" width="400" height="400"/>
@@ -37,6 +38,8 @@
 [Installation](#installation) •
 [Usage](#usage) •
 [Examples](#examples) •
+=======
+>>>>>>> 9b8871f25b17dfeb7338ebaf39078bb0929b0fb9
 [Meta](#meta)
 
 </div>
@@ -321,6 +324,7 @@ Be sure to add your `YOUTUBE_API_KEY` to `~/.config/fabric/.env`.
 `fabric` was created by <a href="https://danielmiessler.com/subscribe" target="_blank">Daniel Miessler</a> in January of 2024.
 <br /><br />
 <a href="https://twitter.com/intent/user?screen_name=danielmiessler">![X (formerly Twitter) Follow](https://img.shields.io/twitter/follow/danielmiessler)</a>
+<<<<<<< HEAD
 =======
 <br />
 
@@ -471,3 +475,5 @@ Special thanks to the following people for inspiration and contributions.
 
 ```
 
+=======
+>>>>>>> 9b8871f25b17dfeb7338ebaf39078bb0929b0fb9
