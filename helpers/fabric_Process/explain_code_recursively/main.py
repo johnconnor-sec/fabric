@@ -19,7 +19,7 @@ def process_file(input_filepath, output_dir, ignored_paths, prepend_string):
 
         # Use 'fabric' to process the combined input
         fabric_process = subprocess.Popen(
-            ['fabric', '-m', 'claude-3-5-sonnet-20240620', '-sp', 'explain_code'],
+            ['fabric', '-m', 'claude-3-5-sonnet-20240620', '-p', 'explain_code'],
             stdin=subprocess.PIPE, stdout=subprocess.PIPE
         )
         output, _ = fabric_process.communicate(input=combined_input.encode())
