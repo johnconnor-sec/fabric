@@ -17,7 +17,7 @@ def build_request(http, *args, **kwargs):
     return HttpRequest(http, *args)
 
 # YouTube Data API setup
-API_KEY = "AIzaSyA0E0ifJ3WtiVDsnyj-VPang2pHn6JXoKQ" # Add your API key here as a string
+API_KEY = "YOUR_YOUTUBE_API_KEY_HERE" # Add your API key here as a string
 youtube = build('youtube', 'v3', developerKey=API_KEY, requestBuilder=build_request)
 
 # Obsidian setup
@@ -26,26 +26,6 @@ OBSIDIAN_VAULT_PATH = r'/home/john/Documents/Obsidian Vault/'  # Ensure the path
 # List of playlist IDs you want to monitor mapped to their respective file paths
 PLAYLIST_IDS = {
     'PL-qEoXFQG4wuaN4huGKJTeORyGOrN26Yx': os.path.join(OBSIDIAN_VAULT_PATH, '4_Reference Notes/Obsidian Videos.md'),
-    'PL-qEoXFQG4wtk7qBocZPIMB0j3xgpit7F': os.path.join(OBSIDIAN_VAULT_PATH, '4_Reference Notes/AI Videos.md'),
-    'PL-qEoXFQG4wuj-t1BwimNtTMDBg8aWLJt': os.path.join(OBSIDIAN_VAULT_PATH, '4_Reference Notes/Networking Videos.md'),
-    'PL-qEoXFQG4wsgKqexYOF9kSAOLXURRBDV': os.path.join(OBSIDIAN_VAULT_PATH, '4_Reference Notes/Docker Videos.md'),
-    'PL-qEoXFQG4wucRrp1r3xx7udQHmRI7xhJ': os.path.join(OBSIDIAN_VAULT_PATH, '4_Reference Notes/Web Videos.md'),
-    'PL-qEoXFQG4wtKE8fRsSkR7tWD5Qk2KkyV': os.path.join(OBSIDIAN_VAULT_PATH, '4_Reference Notes/Homelab Videos.md'),
-    'PL-qEoXFQG4wvkq990fFa-YonPTGhmDAB5': os.path.join(OBSIDIAN_VAULT_PATH, '4_Reference Notes/Python Videos.md'),
-    'PL-qEoXFQG4wv0Jy1Jq8aWjb2-GE0fgqrc': os.path.join(OBSIDIAN_VAULT_PATH, '4_Reference Notes/Hacker Videos.md'),
-    'PL-qEoXFQG4wsGPvWNSQ_ulzISK3JDso7S': os.path.join(OBSIDIAN_VAULT_PATH, '4_Reference Notes/Database Videos.md'),
-    'PL-qEoXFQG4wtPiHtUsPMElKQibaL6PbKT': os.path.join(OBSIDIAN_VAULT_PATH, '4_Reference Notes/Business Videos.md'),
-    'PL-qEoXFQG4wuQoGkmFOzSD0yfJZCY7QRd': os.path.join(OBSIDIAN_VAULT_PATH, '4_Reference Notes/Agents Videos.md'),
-    'PL-qEoXFQG4wuRbP19ToXsCp9lgt2U1SxA': os.path.join(OBSIDIAN_VAULT_PATH, '4_Reference Notes/Ollama Videos.md'),
-    'PL-qEoXFQG4wsBAxcqKVttqDPhmb66_2NB': os.path.join(OBSIDIAN_VAULT_PATH, '4_Reference Notes/Prompting Videos.md'),
-    'PL-qEoXFQG4wuYOlwspyHfXwVFPHGXe2W3': os.path.join(OBSIDIAN_VAULT_PATH, '4_Reference Notes/Automation Videos.md'),
-    'PL-qEoXFQG4wsgQ-9lqmHZ1LL1poMCtQhj': os.path.join(OBSIDIAN_VAULT_PATH, '4_Reference Notes/RAG Videos.md'),
-    'PL-qEoXFQG4wtDVPpK2FfdsP7c9r4cIfPH': os.path.join(OBSIDIAN_VAULT_PATH, '4_Reference Notes/Langchain Videos.md'),
-    'PL-qEoXFQG4wu8fWgLK4AyS0Ub3nx_meVJ': os.path.join(OBSIDIAN_VAULT_PATH, '4_Reference Notes/No-Code Videos.md'),
-    'PL-qEoXFQG4wsLlwL4xqP9V2yOEhIziz1n': os.path.join(OBSIDIAN_VAULT_PATH, '4_Reference Notes/Fine Tuning Videos.md'),
-    'PL-qEoXFQG4wu41nga8EyWj0M5r1nwIK7Z': os.path.join(OBSIDIAN_VAULT_PATH, '4_Reference Notes/Red AI Videos.md'),
-    'PL-qEoXFQG4wtNGbvU5ksWhxwhZZbXphFB': os.path.join(OBSIDIAN_VAULT_PATH, '4_Reference Notes/Web Scraping Videos.md'),
-    'PL-qEoXFQG4wsQDX05QMTePY6amXvdGQ-m': os.path.join(OBSIDIAN_VAULT_PATH, '4_Reference Notes/CrewAI Videos.md'),
 }
 
 def get_latest_videos():
