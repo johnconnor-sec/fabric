@@ -3,20 +3,24 @@ package core
 import (
 	"bytes"
 	"fmt"
+	"github.com/danielmiessler/fabric/vendors/groq"
+	"os"
+	"strconv"
+	"strings"
+
 	"github.com/atotto/clipboard"
 	"github.com/danielmiessler/fabric/common"
 	"github.com/danielmiessler/fabric/db"
 	"github.com/danielmiessler/fabric/vendors/anthropic"
 	"github.com/danielmiessler/fabric/vendors/azure"
+	"github.com/danielmiessler/fabric/vendors/dryrun"
 	"github.com/danielmiessler/fabric/vendors/gemini"
-	"github.com/danielmiessler/fabric/vendors/groc"
 	"github.com/danielmiessler/fabric/vendors/ollama"
 	"github.com/danielmiessler/fabric/vendors/openai"
+	"github.com/danielmiessler/fabric/vendors/openrouter"
+	"github.com/danielmiessler/fabric/vendors/siliconcloud"
 	"github.com/danielmiessler/fabric/youtube"
 	"github.com/pkg/errors"
-	"os"
-	"strconv"
-	"strings"
 )
 
 const DefaultPatternsGitRepoUrl = "https://github.com/danielmiessler/fabric.git"
@@ -56,8 +60,8 @@ func NewFabricBase(db *db.Db) (ret *Fabric) {
 	ret.DefaultModel = ret.AddSetupQuestionCustom("Model", true,
 		"Enter the index the name of your default model")
 
-	ret.VendorsAll.AddVendors(openai.NewClient(), azure.NewClient(), ollama.NewClient(), groc.NewClient(),
-		gemini.NewClient(), anthropic.NewClient())
+	ret.VendorsAll.AddVendors(openai.NewClient(), azure.NewClient(), ollama.NewClient(), groq.NewClient(),
+		gemini.NewClient(), anthropic.NewClient(), siliconcloud.NewClient(), openrouter.NewClient())
 
 	return
 }
@@ -182,13 +186,20 @@ func (o *Fabric) configure() (err error) {
 	return
 }
 
-func (o *Fabric) GetChatter(model string, stream bool) (ret *Chatter, err error) {
+func (o *Fabric) GetChatter(model string, stream bool, dryRun bool) (ret *Chatter, err error) {
 	ret = &Chatter{
 		db:     o.Db,
 		Stream: stream,
+		DryRun: dryRun,
 	}
 
-	if model == "" {
+	if dryRun {
+		ret.vendor = dryrun.NewClient()
+		ret.model = model
+		if ret.model == "" {
+			ret.model = o.DefaultModel.Value
+		}
+	} else if model == "" {
 		ret.vendor = o.FindByName(o.DefaultVendor.Value)
 		ret.model = o.DefaultModel.Value
 	} else {
