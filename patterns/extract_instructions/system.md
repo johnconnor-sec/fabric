@@ -40,12 +40,10 @@ Extract and present the key instructions from the given material in an easy-to-f
 ## Example Output in Markdown Format
 
 ```
-# Project:  {{short_title}} : +tags +tags 
+# Project: The Perfect Omelet : +breakfast +recipe 
 ### Objectives
 - Learn to make a perfect omelet using the French technique
 - Understand the importance of proper pan preparation and heat control
-
-- Title: Brief, descriptive title of the process
 
 - Prerequisites (if applicable):
 
